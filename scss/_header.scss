@@ -1,0 +1,128 @@
+@use "./base" as *;
+
+.header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 777;
+  backdrop-filter: $backdropBlur;
+}
+
+.nav {
+  @extend .flex-between-center;
+  min-height: $size-7-base;
+
+  &__menu {
+    @extend .flex-between-center;
+    gap: $size-4-base;
+    border-bottom: $border;
+    padding: $size-base;
+  }
+
+  &__item:last-child {
+    display: none;
+  }
+
+  &__link {
+    display: block;
+    color: $light-grey;
+    font-size: $size-1-xl;
+
+    &:hover,
+    &:focus-visible {
+      text-shadow: $textShadow;
+    }
+  }
+
+  .link__button {
+    @extend .button;
+    @extend .button__primary;
+    font-size: $size-1-xl;
+    display: none;
+  }
+
+  &__menu-button {
+    display: none;
+    padding: 0;
+
+    .bar {
+      display: block;
+      width: $size-3-base;
+      height: .3rem;
+      margin: $size-xsmall 0;
+      border-radius: $size-small;
+      background-color: $light-primary;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    min-height: $size-6-base;
+
+    .button {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    border-bottom: $border;
+
+    &__menu {
+      position: absolute;
+      top: $size-6-base;
+      left: 0;
+      width: 100%;
+      gap: 0;
+      padding: 0;
+      padding-bottom: $size-4-base;
+      flex-direction: $column;
+      background-color: $dark-accent;
+      backdrop-filter: blur(2rem);
+      transition: $transition;
+      transform: translateX(-100%);
+      z-index: 77;
+
+      &.active {
+        display: block;
+        transform: translateX(0);
+      }
+    }
+
+    &__item {
+      width: $width-95;
+      margin-inline: auto;
+
+      &:last-child {
+        display: block;
+      }
+    }
+
+    &__link {
+      padding-block: $size-small;
+    }
+
+    .link__button {
+      display: block;
+      padding: $size-xsmall $size-3-base;
+      margin-top: $size-2-base;
+      text-align: center;
+    }
+
+    &__menu-button {
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    min-height: $size-5-base;
+
+    &__menu {
+      top: $size-5-base;
+    }
+  }
+}

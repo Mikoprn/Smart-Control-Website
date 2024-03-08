@@ -1,0 +1,16 @@
+@use "./base" as *;
+
+.offers {
+  @extend .grid-center;
+  max-width: $size-80-base;
+  text-align: center;
+  background-color: $dark;
+  padding: $size-3-base;
+  border: $border;
+  border-radius: $size-2-base;
+
+  > p {
+    @extend.text-grey;
+    margin-block: $size-2-base;
+  }
+}

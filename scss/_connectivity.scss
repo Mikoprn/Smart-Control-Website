@@ -1,0 +1,85 @@
+@use "./base" as *;
+
+.connectivity {
+  @extend .grid-center;
+
+  > h2 {
+    @extend .text-center;
+  }
+
+  > p {
+    @extend .text-grey;
+    max-width: $size-80-base;
+    width: 100%;
+    margin-block: $size-base $size-4-base;
+  }
+
+  &__contents {
+    @extend .grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $size-2-base;
+    grid-template-areas:
+      "card1 img card3"
+      "card2 img card4";
+
+    margin-inline: $size-6-base;
+
+    > *:not(:nth-child(3)) {
+      padding: $size-2-base;
+      border: $border;
+      border-radius: $size-small;
+
+      > h3 {
+        margin-bottom: $size-base;
+      }
+
+      > p {
+        @extend .text-grey;
+      }
+    }
+
+    .content:nth-child(1) {
+      grid-area: card1;
+    }
+
+    .content:nth-child(2) {
+      grid-area: card2;
+    }
+
+    .content:nth-child(3) {
+      grid-area: img;
+      width: min($size-30-base, 40vw);
+      place-self: center;
+    }
+
+    .content:nth-child(4) {
+      grid-area: card3;
+    }
+
+    .content:nth-child(5) {
+      grid-area: card4;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .connectivity {
+    &__contents {
+      margin-inline: 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .connectivity {
+    &__contents {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "card1"
+        "card2"
+        "img"
+        "card3"
+        "card4";
+    }
+  }
+}

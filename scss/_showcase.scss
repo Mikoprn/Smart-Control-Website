@@ -1,0 +1,115 @@
+@use "./base" as *;
+
+section:first-child {
+  padding-block: $size-base;
+}
+
+.showcase {
+  @extend .flex-between-center;
+  gap: $size-6-base;
+  padding-top: 0;
+
+  &__contents {
+    max-width: $size-70-base;
+    width: 100%;
+
+    h1 {
+      background-image: $lightGradient;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      @extend .text-grey;
+      max-width: $size-60-base;
+      width: 100%;
+      margin-block: $size-base $size-3-base;
+    }
+
+    .showcase__buttons {
+      @extend .flex;
+      gap: $size-3-base;
+    }
+  }
+
+  &__images {
+    position: relative;
+  }
+
+  &__image:first-child {
+    width: clamp(15rem, 25vw, 27rem);
+    transform: rotate(-20deg) translate(-$size-10-base, -$size-3-base);
+  }
+
+  &__image:last-child {
+    position: absolute;
+    top: 25%;
+    right: 0;
+    width: clamp(12rem, 19vw, 21rem);
+    transform: rotate(15deg) translate(0, 0);
+    filter: $dropShadow;
+  }
+}
+@media (max-width: 1024px) {
+  section:first-child {
+    padding-block: min($size-5-base, 7%);
+  }
+}
+
+@media (max-width: 768px) {
+  .showcase {
+    flex-direction: $column;
+    gap: 0;
+    padding-top: $size-3-base;
+
+  &__contents {
+    h1 {
+      text-align: center;
+    }
+
+    p {
+      margin-inline: auto;
+    }
+  }
+
+    &__buttons {
+      justify-content: center;
+    }
+
+    &__image:first-child {
+      transform: rotate(-60deg) translate(-$size-3-base);
+    }
+
+    &__image:last-child {
+      transform: rotate(20deg) translate(0, -$size-4-base);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+    .showcase__buttons > * {
+      padding: $size-xsmall $size-2-base;
+    }
+}
+
+@media (max-width: 375px) {
+  html {
+    font-size: 55%;
+  }
+
+  .showcase {
+    gap: $size-2-base;
+
+    &__contents h1 {
+      text-align: center;
+    }
+
+    &__image:first-child {
+      transform: rotate(-60deg) translate(-$size-small);
+    }
+    &__image:last-child {
+      transform: rotate(20deg) translate(0, -$size-5-base);
+    }
+  }
+}

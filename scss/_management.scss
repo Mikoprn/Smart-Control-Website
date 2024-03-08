@@ -1,0 +1,141 @@
+@use "./base" as *;
+
+.management {
+  @extend .grid-center;
+
+  > h2 {
+    @extend .text-center;
+    max-width: $size-90-base;
+    width: 100%;
+  }
+
+  > p {
+    @extend .text-grey;
+    max-width: $size-70-base;
+    width: 100%;
+    margin-block: $size-base $size-3-base;
+  }
+
+  &__options {
+    @extend .grid-center;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    .tab__buttons {
+      @extend .flex-center;
+      border: $border;
+      border-radius: $size-4-base;
+    }
+
+    .tab__contents {
+      .tab__images {
+        gap: $size-4-base;
+        width: 100%;
+        margin-block: $size-4-base $size-9-base;
+        display: none;
+        animation: fadein 300ms;
+
+        @keyframes fadein {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        figure {
+          padding: $size-5-base;
+          border-radius: $size-base;
+          background-color: rgba(0, 0, 0, 0.6);
+          position: relative;
+          flex: 1;
+          width: 100%;
+          overflow: hidden;
+
+          img {
+            width: min($size-20-base - $size-2-base, 60vw);
+          }
+
+          figcaption {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: min(5%, $size-2-base);
+            backdrop-filter: $backdropBlur;
+            -webkit-backdrop-filter: $backdropBlur;
+            border-top: $border;
+
+            p {
+              margin-top: $size-base;
+            }
+          }
+
+          &:nth-child(2) {
+            transform: scale(1.1) translateY(5%);
+          }
+        }
+
+        &.smartwatch {
+          figure {
+            > img {
+              width: min($size-20-base, 50vw);
+            }
+          }
+        }
+      }
+    }
+
+    #btn-1:checked ~ .tab__contents #images-1,
+    #btn-2:checked ~ .tab__contents #images-2 {
+      display: flex;
+    }
+
+    #btn-1:checked ~ .tab__buttons #button-1,
+    #btn-2:checked ~ .tab__buttons #button-2 {
+      @extend .button__accent;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .tab__contents {
+    .tab__images {
+      margin-block: $size-4-base $size-8-base;
+    }
+  }
+}
+
+@media (max-width: 687px) {
+  .management__options {
+    .tab__contents {
+      .tab__images {
+        flex-direction: $column;
+        gap: $size-3-base;
+        margin-block: $size-4-base $size-4-base;
+
+        figure:nth-child(2) {
+          transform: scale(1) translateY(0%);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .management {
+    &__options {
+      .tab__buttons {
+        .button {
+          padding: $size-xsmall $size-2-base;
+        }
+      }
+    }
+
+    a {
+      padding: $size-xsmall $size-2-base;
+    }
+  }
+}

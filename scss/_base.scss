@@ -1,0 +1,247 @@
+$lightGradient: linear-gradient(to right, rgb(242, 246, 250), rgb(84 88 100));
+
+$accent: rgb(0, 255, 0);
+$light-base: rgb(255, 255, 255);
+$light-primary: rgb(242, 246, 250);
+$grey: rgba(242, 246, 250, 0.5);
+$light-grey: rgb(211, 211, 211);
+$dark-grey: rgb(69, 71, 78);
+$dark: rgba(0, 0, 0, 0.6);
+$dark-accent: rgb(27, 27, 27);
+
+$size-xsmall: 0.5rem;
+$size-small: 1rem;
+$size-base: 1.6rem;
+$size-1-xl: 1.8rem;
+$size-2-base: 2rem;
+$size-3-base: 3rem;
+$size-4-base: 4rem;
+$size-5-base: 5rem;
+$size-6-base: 6rem;
+$size-7-base: 7rem;
+$size-8-base: 8rem;
+$size-9-base: 9rem;
+$size-10-base: 10rem;
+$size-20-base: 20rem;
+$size-20-xl: 25rem;
+$size-30-base: 30rem;
+$size-40-base: 40rem;
+$size-50-base: 50rem;
+$size-60-base: 60rem;
+$size-70-base: 70rem;
+$size-80-base: 80rem;
+$size-90-base: 90rem;
+
+$fw-extraLight: 200;
+$fw-base: 300;
+$fw-medium: 400;
+$fw-semiBold: 600;
+$fw-Bold: 800;
+
+$transition: all 300ms ease-in-out;
+$border: 1px solid $dark-grey;
+$borderAccent: 1px solid $accent;
+$opacity: 0.7;
+$boxShadow: 0 0 1.3rem $accent;
+$textShadow: 0 $size-base $size-xsmall $accent;
+$dropShadow: drop-shadow(-0.5rem 0.3rem 0.2rem rgba(0, 0, 0, 0.4));
+$backdropBlur: blur($size-2-base);
+
+$max-width: 144rem;
+$width-90: 90%;
+$width-95: 95%;
+$column: column;
+$row: row;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  line-height: 1.5;
+  outline-offset: $size-small;
+}
+
+html {
+  font-family: Helvetica, sans-serif, Arial;
+  font-size: 62.5%;
+  color-scheme: dark;
+  color: $light-primary;
+  background-color: $dark;
+}
+
+h1 {
+  font-size: clamp($size-4-base, 5vw, $size-6-base);
+  font-weight: $fw-semiBold;
+  line-height: 1.05;
+}
+
+h2,
+.h2 {
+  font-size: clamp($size-3-base, 4vw, $size-4-base);
+  font-weight: $fw-semiBold;
+  line-height: 1.2;
+}
+
+h3,
+.h3 {
+  font-size: clamp($size-2-base, 2vw, $size-3-base);
+  font-weight: $fw-semiBold;
+  line-height: 1.2;
+}
+
+h4,
+.h4 {
+  font-size: clamp($size-1-xl, 1.5vw, $size-2-base);
+  font-weight: $fw-semiBold;
+}
+
+p,
+span {
+  font-size: $size-base;
+  line-height: 1.4;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+a {
+  font-size: $size-base;
+  color: $light-primary;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    opacity: $opacity;
+  }
+}
+
+.button {
+  font-size: $size-base;
+  padding: $size-small $size-3-base;
+  border-radius: $size-4-base;
+  cursor: pointer;
+
+  &__primary {
+    color: $dark;
+    background-color: $accent;
+    font-weight: $fw-semiBold;
+
+    &:hover,
+    &:focus-visible {
+      color: $accent;
+      background-color: transparent;
+      box-shadow: $boxShadow;
+    }
+  }
+
+  &__accent {
+    background-color: transparent;
+    border: $borderAccent;
+
+    &:hover,
+    &:focus-visible {
+      color: $accent;
+      box-shadow: $boxShadow;
+    }
+  }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-center {
+  display: grid;
+  place-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-grey {
+  opacity: $opacity;
+}
+
+.wrapper-large {
+  max-width: $max-width;
+  width: $width-90;
+  margin-inline: auto;
+}
+
+.wrapper-small {
+  max-width: $max-width;
+  width: $width-95;
+  margin-inline: auto;
+}
+
+.logo {
+  font-size: $size-2-base;
+  font-weight: $fw-semiBold;
+
+  &:hover,
+  &:focus-visible {
+    text-shadow: $textShadow;
+  }
+
+  span {
+    color: $accent;
+    font-size: $size-2-base;
+    font-weight: $fw-semiBold;
+  }
+}
+
+main > section {
+  padding-block: min($size-5-base, 10%);
+}
+
+.wrapper__section {
+  max-width: $max-width;
+  width: $width-90;
+  margin-inline: auto;
+}

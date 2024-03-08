@@ -1,0 +1,113 @@
+@use "./base" as *;
+
+.control {
+  @extend .grid;
+
+  &__contents {
+    @extend .flex-between;
+  }
+
+  &__contents-1 {
+    max-width: $size-80-base;
+    width: 100%;
+
+    p {
+      @extend .text-grey;
+      margin-block: $size-base $size-3-base;
+    }
+  }
+
+  &__contents-2 {
+    @extend .flex-center;
+    @extend .flex-column;
+    gap: $size-2-base;
+  }
+
+  &__contents-extra {
+    padding: $size-base;
+    border: $borderAccent;
+    border-radius: $size-small;
+  }
+
+  &__contents-extra:first-child {
+    color: $dark;
+    background-color: $accent;
+
+    span {
+      font-weight: $fw-semiBold;
+    }
+  }
+
+  &__images {
+    @extend .flex-between;
+    gap: $size-3-base;
+    margin-top: $size-3-base;
+
+    figure {
+      @extend .grid-center;
+      padding: $size-2-base;
+      border-radius: $size-base;
+      background-color: $dark;
+      position: relative;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: min($size-20-base, 60vw);
+      }
+
+      figcaption {
+        position: absolute;
+        bottom: 0;
+        padding: min(5%, $size-2-base);
+        padding-bottom: $size-3-base;
+        backdrop-filter: $backdropBlur;
+        -webkit-backdrop-filter: $backdropBlur;
+        border-top: $border;
+
+        p {
+          margin-block: $size-small $size-2-base;
+        }
+
+        a {
+          padding-inline: $size-2-base;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .control {
+    &__contents {
+      flex-direction: column;
+      margin-inline: auto;
+    }
+
+    &__contents-1 {
+      h2 {
+        text-align: center;
+      }
+    }
+
+    &__contents-2 {
+      flex-direction: $row;
+      gap: $size-3-base;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper__section {
+    width: $width-95;
+  }
+}
+
+@media (max-width: 687px) {
+  .control {
+    &__images {
+      flex-direction: $column;
+    }
+  }
+}

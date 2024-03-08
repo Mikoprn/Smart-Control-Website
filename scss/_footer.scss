@@ -1,0 +1,52 @@
+@use "./base" as *;
+
+.footer {
+  color: $light-grey;
+
+  &__nav {
+    @extend .flex-between-center;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: $size-base;
+    padding-bottom: $size-small;
+    border-bottom: $border;
+  }
+
+  &__list {
+    @extend .flex-between-center;
+    gap: $size-4-base;
+
+    a {
+      color: $light-grey;
+    }
+  }
+
+  &__extra {
+    @extend .flex-between-center;
+    flex-wrap: wrap;
+    gap: $size-small;
+    padding-block: $size-base;
+
+    span {
+      color: $accent;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    color: $light-grey;
+
+    &__nav {
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .footer {
+    &__extra {
+      justify-content: center;
+    }
+  }
+}
